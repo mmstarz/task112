@@ -1,0 +1,8 @@
+export const WATCH_EPISODES = 'WATCH_EPISODES';
+export const SET_EPISODES = 'SET_EPISODES';
+
+export const WATCH_EPISODE = 'WATCH_EPISODE';
+export const SET_EPISODE = 'SET_EPISODE';
+
+export const WATCH_CHARACTER = 'WATCH_CHARACTER';
+export const SET_CHARACTER = 'SET_CHARACTER';
