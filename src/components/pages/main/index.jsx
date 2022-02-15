@@ -2,7 +2,7 @@ import useStyles from 'components/pages/main/index.styles';
 import React, { useCallback, useState } from 'react';
 import classNames from 'classnames/bind';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
-import { pageContainerVariant, toRight } from 'framerMotion/containerVariants';
+import { containerVariant, toRight } from 'framerMotion/containerVariants';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
@@ -48,7 +48,8 @@ const LandingPage = () => {
 
   return (
     <motion.div
-      variants={pageContainerVariant}
+      className={cx(classes.wrapper, classes.grow, classes.w100)}
+      variants={containerVariant}
       initial="initial"
       animate="animate"
       exit="exit"

@@ -1,6 +1,10 @@
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(theme => ({
+  wrapper: {
+    display: 'flex',
+  },
+  grow: { flexGrow: '1' },
   centered: {
     flexDirection: 'column',
     alignItems: 'center',

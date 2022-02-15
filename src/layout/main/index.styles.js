@@ -5,6 +5,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    overflow: 'hidden',
   },
   w100: { width: '100%' },
   mh100: { minHeight: '100vh' },

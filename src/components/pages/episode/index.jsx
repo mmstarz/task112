@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { pageContainerVariant } from 'framerMotion/containerVariants';
+import { containerVariant } from 'framerMotion/containerVariants';
 import useGetEpisode from '../../../hooks/useGetEpisode';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
@@ -32,7 +32,8 @@ const EpisodePage = () => {
 
   return (
     <motion.div
-      variants={pageContainerVariant}
+      className={cx(classes.wrapper, classes.grow, classes.w100)}
+      variants={containerVariant}
       initial="initial"
       animate="animate"
       exit="exit"

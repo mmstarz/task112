@@ -1,17 +1,16 @@
-export const pageContainerVariant = {
+export const containerVariant = {
   initial: {
     opacity: 0,
-    width: '100%',
     x: '100vw',
     transition: {
-      type: 'spring',
+      ease: 'easeIn',
     },
   },
   animate: {
     opacity: 1,
     x: '0',
     transition: {
-      type: 'spring',
+      ease: 'easeIn',
       delay: 0.5,
       duration: 0.5,
       when: 'beforeChildren',
@@ -20,8 +19,9 @@ export const pageContainerVariant = {
     },
   },
   exit: {
-    x: '-100vw',
+    x: '100vw',
     transition: {
+      ease: 'easeIn',
       duration: 0.5,
       delay: 0.25,
     },

@@ -6,6 +6,7 @@ export const getEpisodes = async () => {
   try {
     // ?skip=0&limit=10 - not working
     const res = await axios.get(`${BASE_URL}/episodes`);
+    console.log('data: ', res?.data);
     return res?.data;
   } catch (error) {
     throw new Error(error.message);
