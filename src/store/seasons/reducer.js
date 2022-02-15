@@ -1,4 +1,4 @@
-import { SET_EPISODES } from '../actionTypes';
+import { SET_SEASONS } from '../actionTypes';
 
 const initialState = {
   data: [],
@@ -9,7 +9,7 @@ const initialState = {
 
 const episodesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_EPISODES:
+    case SET_SEASONS:
       return {
         ...state,
         ...action.payload,

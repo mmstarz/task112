@@ -4,6 +4,7 @@ const BASE_URL = 'https://www.breakingbadapi.com/api';
 
 export const getEpisodes = async () => {
   try {
+    // ?skip=0&limit=10 - not working
     const res = await axios.get(`${BASE_URL}/episodes`);
     return res?.data;
   } catch (error) {

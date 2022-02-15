@@ -1,5 +1,5 @@
-export const WATCH_EPISODES = 'WATCH_EPISODES';
-export const SET_EPISODES = 'SET_EPISODES';
+export const WATCH_SEASONS = 'WATCH_SEASONS';
+export const SET_SEASONS = 'SET_SEASONS';
 
 export const WATCH_EPISODE = 'WATCH_EPISODE';
 export const SET_EPISODE = 'SET_EPISODE';

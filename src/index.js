@@ -5,6 +5,9 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import { BrowserRouter } from 'react-router-dom';
+import { StyledEngineProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import { appTheme } from './theme';
 import store from './store';
 import App from './components/app';
 import reportWebVitals from './reportWebVitals';
@@ -28,7 +31,11 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <ThemeProvider theme={appTheme}>
+          <StyledEngineProvider injectFirst>
+            <App />
+          </StyledEngineProvider>
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

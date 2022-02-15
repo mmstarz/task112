@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import episodesReducer from './episodes/reducer';
+import seasonsReducer from './seasons/reducer';
 import episodeReducer from './episode/reducer';
 import characterReducer from './character/reducer';
 
 const rootReducer = combineReducers({
-  episodes: episodesReducer,
+  episodes: seasonsReducer,
   episode: episodeReducer,
   character: characterReducer,
 });

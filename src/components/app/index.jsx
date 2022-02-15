@@ -1,9 +1,12 @@
 import React, { Suspense } from 'react';
-import { Navigate, useRoutes } from 'react-router-dom';
+import { Navigate, useRoutes, useLocation, Routes } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import routes from '../../routes';
 import MainLayout from '../../layout/main';
 
 const App = () => {
+  const location = useLocation();
+
   const mainRoutes = {
     path: '/',
     element: <MainLayout />,
@@ -38,6 +41,10 @@ const App = () => {
 
   const routing = useRoutes([mainRoutes, episodeRoutes, characterRoutes]);
 
-  return <Suspense fallback={<div>Loading...</div>}>{routing}</Suspense>;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AnimatePresence exitBeforeEnter>{routing}</AnimatePresence>
+    </Suspense>
+  );
 };
 export default App;

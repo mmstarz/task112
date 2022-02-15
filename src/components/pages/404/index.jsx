@@ -1,17 +1,30 @@
+import useStyles from 'components/pages/404/index.styles';
 import React from 'react';
-import useStyles from './index.styles';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { pageContainerVariant } from 'framerMotion/containerVariants';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
 const NotFoundPage = () => {
   const classes = useStyles();
   const cx = classNames.bind(classes);
 
   return (
-    <div>
-      <div>404 not found page</div>
-      <Link to="/">home</Link>
-    </div>
+    <motion.div
+      variants={pageContainerVariant}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
+      <Stack className={cx(classes.centered, classes.w100, classes.h100)}>
+        <Typography display="block" component="div" className={classes.text1}>
+          Page not found 404
+        </Typography>
+        <Link to="/task112">Go Home</Link>
+      </Stack>
+    </motion.div>
   );
 };
 export default NotFoundPage;

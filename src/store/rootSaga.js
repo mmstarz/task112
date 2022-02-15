@@ -1,6 +1,6 @@
 import { all, spawn } from 'redux-saga/effects';
 
-import episodesWatcher from './episodes/watcher';
+import episodesWatcher from './seasons/watcher';
 import episodeWatcher from './episode/watcher';
 import characterWatcher from './character/watcher';
 

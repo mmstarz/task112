@@ -1,46 +1,92 @@
-import React, { useCallback } from 'react';
-import useStyles from './index.styles';
+import useStyles from 'components/pages/main/index.styles';
+import React, { useCallback, useState } from 'react';
 import classNames from 'classnames/bind';
-import useGetEpisodes from '../../../hooks/useGetEpisodes';
-import EpisodesListItem from '../../episodesListItem';
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import { pageContainerVariant, toRight } from 'framerMotion/containerVariants';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import Pagination from '@mui/material/Pagination';
+import useGetSeasons from 'hooks/useGetSeasons';
+import EpisodesListItem from 'components/episodesListItem';
 
 const LandingPage = () => {
   const classes = useStyles();
   const cx = classNames.bind(classes);
-  const { episodes } = useGetEpisodes();
-  // console.log('episodes: ', episodes);
+  // console.log('seasons: ', seasons);
 
-  const renderEpisodes = useCallback(data => {
-    return data.map(item => {
-      const { episode_id, title, air_date } = item;
-      return (
-        <EpisodesListItem
-          key={title}
-          id={episode_id}
-          title={title}
-          airDate={air_date}
-        />
-      );
-    });
+  const { seasons } = useGetSeasons();
+
+  const [page, setPage] = useState(1);
+
+  const handleChange = useCallback((event, value) => {
+    setPage(prev => value);
   }, []);
 
-  const renderSeasons = useCallback(() => {
-    return episodes?.map((season, idx) => {
-      const key = `season-${idx}`;
+  const renderEpisodes = useCallback(() => {
+    return seasons[page].map(item => {
+      const { episode_id, title, air_date } = item;
       return (
-        <div key={key}>
-          <div>Season: {idx + 1}</div>
-          {renderEpisodes(season)}
-        </div>
+        <motion.div
+          key={title}
+          layout
+          variants={toRight}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+        >
+          <EpisodesListItem
+            // key={title}
+            id={episode_id}
+            title={title}
+            airDate={air_date}
+          />
+        </motion.div>
       );
     });
-  }, [episodes, renderEpisodes]);
+  }, [seasons, page]);
 
   return (
-    <div>
-      <div>landing page</div>
-      <div>{episodes && episodes?.length > 0 && renderSeasons()}</div>
-    </div>
+    <motion.div
+      variants={pageContainerVariant}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
+      <Stack
+        className={cx(
+          classes.container1,
+          classes.gap8,
+          classes.w100,
+          classes.grow,
+          classes.padd24,
+        )}
+      >
+        <Typography
+          display="block"
+          component="div"
+          className={cx(classes.text1, classes.w100)}
+        >
+          Season: {page}
+        </Typography>
+        <Stack
+          className={cx(classes.container1, classes.w100)}
+          divider={<Divider className={classes.w100} />}
+        >
+          <AnimatePresence>
+            <AnimateSharedLayout type="crossfade">
+              {seasons && renderEpisodes()}
+            </AnimateSharedLayout>
+          </AnimatePresence>
+        </Stack>
+        <Pagination
+          className={cx(classes.centered, classes.w100, classes.mtopAuto)}
+          count={Object.keys(seasons).length}
+          page={page}
+          onChange={handleChange}
+        />
+      </Stack>
+    </motion.div>
   );
 };
 

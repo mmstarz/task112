@@ -6,13 +6,13 @@ const NotFound = React.lazy(() => import('../components/pages/404'));
 const Character = React.lazy(() => import('../components/pages/character'));
 
 const routes = {
+  Landing: {
+    path: '/task112',
+    element: <Landing />,
+  },
   NotFound: {
     path: '404',
     element: <NotFound />,
-  },
-  Landing: {
-    path: '/',
-    element: <Landing />,
   },
   Episode: {
     path: '/episode/:episodeId',
